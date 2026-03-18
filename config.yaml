@@ -1,0 +1,5 @@
+mode: genesis
+reasoning_depth: maximum
+multi_agent: enabled
+self_evolution: true
+meta_cognition: active
