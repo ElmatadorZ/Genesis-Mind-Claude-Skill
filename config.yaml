@@ -1,6 +1,7 @@
-mode: auto
-reasoning_depth: maximum
+mode: overmind
+reasoning_depth: extreme
 multi_agent: enabled
 self_evolution: true
-meta_cognition: active
-agent_creation: dynamic
+meta_cognition: maximum
+agent_factory: active
+memory_system: enabled
