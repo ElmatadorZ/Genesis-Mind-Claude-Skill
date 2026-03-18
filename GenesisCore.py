@@ -1,150 +1,162 @@
-import uuid
-from datetime import datetime
+"""
+GENESIS INTELLIGENCE CORE
+------------------------
+Unifies:
+- First Principle Codex (Truth Engine)
+- Compound Genius (Expansion Engine)
+- Cosmic Mind (Perspective Engine)
+
+Creator: Bunyawat Dechanon (Money Atlas)
+"""
+
+from dataclasses import dataclass, field
+from typing import List, Dict, Callable
+import math
+
 
 # ==============================
-# 🧠 MEMORY CORE
+# 1. FIRST PRINCIPLE LAYER
 # ==============================
-class Memory:
+
+@dataclass
+class AtomicTruth:
+    key: str
+    weight: float
+
+
+class FirstPrincipleEngine:
     def __init__(self):
-        self.short_term = []
-        self.long_term = []
-
-    def store(self, data):
-        self.short_term.append(data)
-
-    def commit(self):
-        self.long_term.extend(self.short_term)
-        self.short_term = []
-
-    def recall(self, keyword):
-        return [m for m in self.long_term if keyword in str(m)]
-
-
-# ==============================
-# ⚔️ FIRST PRINCIPLE ENGINE
-# ==============================
-class FirstPrinciple:
-    def analyze(self, problem):
-        return {
-            "truth": f"Core truth of '{problem}'",
-            "assumptions": f"Hidden assumptions in '{problem}'",
-            "leverage": f"Key leverage point in '{problem}'"
+        self.truths = {
+            "causation": AtomicTruth("causation", 1.0),
+            "leverage": AtomicTruth("leverage", 1.2),
+            "entropy": AtomicTruth("entropy", 0.8),
+            "feedback": AtomicTruth("feedback", 1.1),
         }
 
-
-# ==============================
-# 🌐 SYSTEM THINKING
-# ==============================
-class SystemThinking:
-    def map(self, problem):
-        return {
-            "actors": ["users", "market", "power players"],
-            "incentives": ["profit", "control", "growth"],
-            "risks": ["uncertainty", "volatility"]
-        }
+    def evaluate(self, idea: str) -> float:
+        score = 0
+        for k, v in self.truths.items():
+            if k in idea.lower():
+                score += v.weight
+        return score
 
 
 # ==============================
-# 🤖 AGENT SYSTEM
+# 2. COMPOUND GENIUS (UPGRADED)
 # ==============================
-class Agent:
-    def __init__(self, role):
-        self.role = role
 
-    def run(self, problem):
-        return f"[{self.role}] insight on {problem}"
+@dataclass
+class GeniusNode:
+    idea: str
+    depth: int = 0
+    score: float = 0.0
+    children: List["GeniusNode"] = field(default_factory=list)
+
+    def expand(self, generator: Callable[[str], List[str]], max_depth=3):
+        if self.depth >= max_depth:
+            return
+
+        new_ideas = generator(self.idea)
+
+        for idea in new_ideas:
+            node = GeniusNode(idea, self.depth + 1)
+            self.children.append(node)
+            node.expand(generator, max_depth)
 
 
-class AgentFactory:
-    def create_agents(self, problem):
-        return [
-            Agent("Analyst"),
-            Agent("Strategist"),
-            Agent("Skeptic"),
-            Agent("Forecaster")
-        ]
+class CompoundGeniusEngine:
+    def __init__(self, evaluator):
+        self.evaluator = evaluator
+
+    def run(self, seed: str):
+        root = GeniusNode(seed)
+
+        def generator(idea):
+            return [
+                f"{idea} with leverage",
+                f"{idea} with feedback loop",
+                f"{idea} optimized against entropy",
+            ]
+
+        root.expand(generator)
+
+        self._score_tree(root)
+        best = self._select_best(root)
+
+        return best
+
+    def _score_tree(self, node):
+        node.score = self.evaluator.evaluate(node.idea)
+        for c in node.children:
+            self._score_tree(c)
+
+    def _select_best(self, node):
+        best = node
+        for c in node.children:
+            candidate = self._select_best(c)
+            if candidate.score > best.score:
+                best = candidate
+        return best
 
 
 # ==============================
-# 🎯 DECISION ENGINE
+# 3. COSMIC MIND (REAL VERSION)
 # ==============================
-class DecisionEngine:
-    def decide(self, insights):
-        return f"Best Action based on {len(insights)} insights"
+
+class CosmicMindEngine:
+    def __init__(self):
+        self.frames = ["self_now", "future", "market", "system"]
+
+    def evaluate(self, idea: str) -> Dict[str, float]:
+        scores = {}
+        for f in self.frames:
+            scores[f] = self._score_frame(idea, f)
+        return scores
+
+    def _score_frame(self, idea, frame):
+        base = len(idea.split())
+
+        if frame == "future":
+            return math.log(1 + base) * 2
+        if frame == "system":
+            return base * 0.8
+        return base * 0.5
 
 
 # ==============================
-# 🧬 EVOLUTION CORE
+# 4. GENESIS CORE
 # ==============================
-class Evolution:
-    def reflect(self, result):
-        return f"Improvement from result: {result}"
 
-
-# ==============================
-# 🧠 GENESIS CORE
-# ==============================
 class GenesisCore:
-
     def __init__(self):
-        self.memory = Memory()
-        self.fp = FirstPrinciple()
-        self.system = SystemThinking()
-        self.factory = AgentFactory()
-        self.decision_engine = DecisionEngine()
-        self.evolution = Evolution()
+        self.fp = FirstPrincipleEngine()
+        self.cg = CompoundGeniusEngine(self.fp)
+        self.cm = CosmicMindEngine()
 
-    def run(self, problem):
+    def think(self, problem: str):
+        # Step 1: Expand ideas
+        best_idea = self.cg.run(problem)
 
-        print(f"\n=== GENESIS CORE ACTIVATED ===")
-        print(f"Time: {datetime.now()}")
-        print(f"Problem: {problem}")
+        # Step 2: Evaluate perspectives
+        perspective = self.cm.evaluate(best_idea.idea)
 
-        # 1. First Principle
-        fp_result = self.fp.analyze(problem)
-
-        # 2. System Thinking
-        system_map = self.system.map(problem)
-
-        # 3. Multi-Agent
-        agents = self.factory.create_agents(problem)
-        insights = [agent.run(problem) for agent in agents]
-
-        # 4. Decision
-        decision = self.decision_engine.decide(insights)
-
-        # 5. Memory
-        self.memory.store({
-            "id": str(uuid.uuid4()),
+        return {
             "problem": problem,
-            "decision": decision
-        })
-
-        # 6. Evolution
-        evolution = self.evolution.reflect(decision)
-
-        # Output
-        print("\n--- FIRST PRINCIPLE ---")
-        print(fp_result)
-
-        print("\n--- SYSTEM ---")
-        print(system_map)
-
-        print("\n--- AGENT INSIGHTS ---")
-        for i in insights:
-            print(i)
-
-        print("\n--- DECISION ---")
-        print(decision)
-
-        print("\n--- EVOLUTION ---")
-        print(evolution)
+            "best_idea": best_idea.idea,
+            "score": best_idea.score,
+            "perspective": perspective,
+        }
 
 
 # ==============================
-# 🚀 RUN SYSTEM
+# RUN
 # ==============================
 
 if __name__ == "__main__":
     core = GenesisCore()
-    core.run("Global financial war impact on coffee industry")
+
+    result = core.think("investor loses money due to poor decisions")
+
+    print("=== GENESIS OUTPUT ===")
+    for k, v in result.items():
+        print(k, ":", v)
