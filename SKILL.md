@@ -73,3 +73,9 @@ If reasoning is shallow → reject output
 # FINAL RULE
 
 Focus on thinking, not execution.
+## INTERNAL REFERENCE (OPTIONAL)
+
+For extended logic:
+- GENESIS_SKILL.md
+- MODES.md
+- EXECUTION_LAYER.md
