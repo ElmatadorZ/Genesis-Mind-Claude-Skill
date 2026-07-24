@@ -1,0 +1,60 @@
+Genesis Mind
+A multi-agent reasoning operating system: specialist coordination,
+consensus, meta-cognition, and recursive self-evaluation.
+
+Copyright 2026 Bunyawat Dechanon (ElmatadorZ)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+--------------------------------------------------------------------------------
+Attribution
+--------------------------------------------------------------------------------
+Requested (not required beyond this NOTICE):
+
+    Built on Genesis Mind by Bunyawat Dechanon (ElmatadorZ)
+
+Apache-2.0 section 6 grants no trademark rights. "Genesis Mind" and the Genesis
+family of names remain the author's; nothing here permits an adopter to imply
+endorsement by, or affiliation with, the author.
+
+--------------------------------------------------------------------------------
+Relicensing note
+--------------------------------------------------------------------------------
+Earlier versions of this project were distributed under the Open Cognitive
+License v1.0, which carried a 2% royalty above $10M USD annual revenue. That
+licence is withdrawn for this and all future versions. A licence that is not
+OSI-approved -- and one carrying a revenue-share term in particular -- is
+rejected automatically by most corporate open-source review processes,
+whatever its merits, which put the work out of reach of the readers it was
+written for. Apache-2.0 removes that barrier while preserving what mattered:
+section 4 requires attribution and preservation of this NOTICE, and section 6
+withholds trademark rights.
+
+Anyone who obtained a prior version under the Open Cognitive License may
+continue under those terms for that version.
+
+--------------------------------------------------------------------------------
+What this is, and is not
+--------------------------------------------------------------------------------
+This is a reasoning framework. It produces structured thinking -- scenarios,
+frameworks, and decision aids -- not guaranteed conclusions and not truth. The
+human using it remains solely responsible for decisions made on its output.
+
+--------------------------------------------------------------------------------
+Relationship to First Principle Codex OS
+--------------------------------------------------------------------------------
+Genesis Mind inherits the epistemological base layer of First Principle Codex
+OS -- Known/Inferred/Unknown separation, the proof standard, and the mandatory
+self-critique gate. FPCOS is also Apache-2.0:
+
+    https://github.com/ElmatadorZ/FirstPrincipleCodex-OS-Skill

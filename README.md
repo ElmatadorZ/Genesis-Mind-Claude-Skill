@@ -6,6 +6,8 @@
 **Brand:** Money Atlas 
 **Type:** Claude Custom Skill (SKILL.md format)
 
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+
 ---
 
 ## What This Is
@@ -246,10 +248,19 @@ genesis-mind-strategic-intelligence/
 
 ## License
 
-Open Cognitive License v1.0  
-See `LICENSE.md` for full terms.
+[**Apache-2.0**](LICENSE) — see [`NOTICE`](NOTICE) for attribution and the relicensing note.
 
-Attribution required: **Built on Genesis Mind Strategic Intelligence v5C by Bunyawat Dechanon (ElmatadorZ)**
+This replaces the Open Cognitive License v1.0 that earlier versions carried. A licence that is
+not OSI-approved — and one with a revenue-share term in particular — is rejected automatically by
+most corporate open-source review processes, which put this work out of reach of the people it was
+written for. Apache-2.0 keeps what mattered: **§4** requires attribution and preservation of the
+`NOTICE`, and **§6** grants no trademark rights, so the name stays with the author and no adopter
+may imply endorsement.
+
+Requested attribution: **Built on Genesis Mind by Bunyawat Dechanon (ElmatadorZ)**
+
+Anyone who obtained a prior version under the Open Cognitive License may continue under those
+terms for that version.
 
 ---
 
