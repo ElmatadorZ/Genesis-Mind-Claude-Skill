@@ -14,6 +14,19 @@ description: |
   analyzing a situation from multiple angles, or any "should I..." question involving
   real-world trade-offs. This is NOT a market/trading skill — for financial markets,
   BTC, gold, stocks, forex, macro economics, use money-atlas-intelligence-os instead.
+license: "Apache-2.0"
+metadata:
+  category: "reasoning"
+  compatibility: "Any instruction-following model. The reasoning is self-contained in
+    this SKILL.md and needs no tools to run. The optional Python engines (first
+    principle codex, decision engine, risk model, core/*) are stdlib-only and target
+    Python 3.9+."
+  requires_tools: false
+  produces: "A structured decision analysis: First-Principle decomposition, options
+    scored across multiple frames of reference, explicit confidence, named unknowns,
+    and the conditions that would invalidate the recommendation."
+  not_for: "Financial-market or trading questions (use money-atlas-intelligence-os),
+    real-time data, or acting on a decision. It structures thinking; the human decides."
 ---
 
 # GENESIS MIND v5 — STRATEGIC INTELLIGENCE SYSTEM
@@ -135,6 +148,24 @@ User can manually activate: "DEEP MODE", "WAR MODE", "COSMIC MIND", "FULL AGENT"
 
 **If detected → re-run with Skeptic before outputting**
 **If still weak → output: `⚠️ INSUFFICIENT EDGE — รีรันด้วยข้อมูลเพิ่มเติม`**
+
+### When information is insufficient
+
+The skill degrades honestly rather than fabricate:
+
+- **Missing facts** → separate Known / Inferred / Unknown explicitly, and name exactly
+  which unknowns would change the conclusion. Do not present an inference as an
+  observation.
+- **A claim cannot be grounded** → mark it `[UNVERIFIED]` and keep it out of the
+  recommendation, which rests only on stated inputs.
+- **Wrong domain (financial markets)** → hand off to `money-atlas-intelligence-os`
+  rather than stretching this skill past its edge.
+- **Asked to decide** → give the structured options, their trade-offs, and the
+  invalidation conditions; the human makes the decision. This skill structures
+  thinking; it does not act.
+
+An abstention with its reason is a valid output. A confident conclusion built on
+facts the skill does not have is not.
 
 ---
 

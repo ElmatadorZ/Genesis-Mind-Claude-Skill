@@ -1,0 +1,23 @@
+# Python bytecode — never belongs in the repository. It was tracked before this
+# file existed; it is now removed from the index and kept out.
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Test / tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local runtime state written by the engines (identity, memory)
+state/
+*.local.json
+
+# Virtual environments and editors
+.venv/
+venv/
+.env
+.idea/
+.vscode/

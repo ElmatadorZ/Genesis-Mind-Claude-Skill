@@ -10,12 +10,6 @@ Core Philosophy:
 - Think from First Principles
 - Solve from root causes
 - Optimize for system-level leverage
-"""
-"""
-First Principle Codex
----------------------
-
-A reasoning kernel for Genesis Mind.
 
 Core ideas:
     - Reduce phenomena to First Principles (Atomic Truths)

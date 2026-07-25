@@ -220,7 +220,11 @@ genesis-mind-strategic-intelligence/
 ├── genesis_orchestrator.py     ← Multi-agent coordination
 ├── decision_engine.py          ← Decision framework
 ├── shadow_genesis.py           ← Shadow critique layer
-└── first_principle_codex.py    ← First Principle engine (full)
+├── first_principle_codex.py    ← First Principle engine (full)
+│
+├── tests/                      ← unit tests for the reasoning engines + skill contract
+├── tools/validate_skill.py     ← installability + integrity checker (run in CI)
+└── .github/workflows/          ← CI: compile · skill integrity · tests · hygiene
 ```
 
 ---
@@ -231,6 +235,35 @@ genesis-mind-strategic-intelligence/
 2. Place the `genesis-mind-strategic-intelligence/` folder in your Claude skills directory
 3. The skill activates automatically on qualifying questions
 4. Or reference it explicitly in your system prompt
+
+The entry point is **`SKILL.md`** (the Anthropic standard filename). The reasoning is
+self-contained in that file and needs no tools to run — see `metadata.compatibility` in its
+frontmatter. The Python modules are an optional execution layer.
+
+---
+
+## Verifying it before you trust it
+
+Checked on every push, and runnable locally:
+
+```bash
+pip install pytest pyyaml
+
+python tools/validate_skill.py   # frontmatter, license, and reasoning contract intact
+python -m pytest -q              # unit tests over the reasoning engines + skill contract
+```
+
+The tests pin the First Principle Codex's actual behaviour — the epistemic filter that drops
+rumor, the rule that you cannot generate options before framing the problem, the frame heuristics
+(a 10-year horizon rewards compounding; "act now" rewards simplicity), and the selection rule — plus
+the decision and risk engines and the skill's own promises (uncertainty stated, a counter-argument
+required, an invalidation condition named, and honest degradation when data is missing). They are
+non-vacuous: loosen a gate and the matching test turns red.
+
+> The test suite also caught a real defect on the way in: `first_principle_codex.py` carried two
+> module docstrings before `from __future__`, a `SyntaxError` that meant the file never imported.
+> With no CI, nothing had flagged it. It is fixed, and `compileall` now runs in CI so it cannot
+> recur silently.
 
 ---
 
